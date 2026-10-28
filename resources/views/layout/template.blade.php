@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Roti Wonosari')</title>
     @stack('styles')
+    <!-- 1. CDN CSS Datepicker (Flatpickr) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="/css/@yield('css', 'home.css')">
 </head>
 <body>
@@ -12,12 +14,15 @@
         <a href="{{ route('home') }}" class="navbar-brand">Roti Wonosari</a>
         <div class="navbar-menu">
             <a href="{{ route('home') }}">Beranda</a>
-            <a href="{{ route('produk') }}">Menu Roti</a>
+            <a href="{{ route('coba') }}">Menu Roti</a>
             <a href="#keunggulan">Tentang Kami</a>
             <a href="#kontak">Kontak</a>
         </div>
     </nav>
 
     @yield('content')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    @stack('scripts')
 </body>
 </html>

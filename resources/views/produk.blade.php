@@ -8,18 +8,20 @@
 
 @section('content')
 <div class="product-grid">
-    @foreach($products as $product)
+    @foreach($rotis as $roti)
         <div class="card">
             <div>
                 <div class="card-body">
-                    <h3 class="card-title">{{ $product->name }}</h3>
+                    <span class="badge bg-secondary mb-2">{{ $roti->category }}</span>
+                    
+                    <h3 class="card-title">{{ $roti->name }}</h3>
                 </div>
             </div>
-            <div class="card-footer">
-                <span class="price">Rp {{ $product->price }}</span>
-                <button class="btn-add">+ Tambah</button>
+                <div class="card-footer">
+                    <span class="price">Rp {{ number_format($roti->price, 0, ',', '.') }}</span>
+                    <button class="btn-add">+ Tambah</button>
+                </div>
             </div>
-        </div>
     @endforeach
 </div>
 @endsection

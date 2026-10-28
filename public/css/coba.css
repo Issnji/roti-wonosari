@@ -1,0 +1,342 @@
+/* --- GAYA DASAR & NAVBAR --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff8dc;
+}
+
+.navbar {
+    background-color: #e06339; 
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: #f8f6f2;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-menu a {
+    color: #fef3c7;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* --- WRAPPER UTAMA --- */
+.content-wrapper {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+h4 {
+    color: #b45309;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* --- HEADER & TOMBOL CREATE --- */
+.action-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.action-header h3 {
+    color: #b45309;
+    margin: 0;
+    font-size: 20px;
+}
+
+.btn-create {
+    background-color: #16a34a;
+    color: #ffffff;
+    padding: 9px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* --- COMPONENT: BADGE KATEGORI --- */
+.badge {
+    display: inline-block;
+    background-color: #6b7280;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* --- FILTER & FORM PENCARIAN (SOAL 3 & 5) --- */
+.filter-container {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    flex: 2;
+    min-width: 240px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-box button {
+    background-color: #e06339;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-box select {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.reset-box a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #6b7280;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* --- 5 ROTI TERBARU (SOAL 2) --- */
+.latest-grid {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.card-latest {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 12px 15px;
+    min-width: 160px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.card-latest .card-title {
+    font-size: 14px;
+    margin: 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Tanggal Kadaluarsa pada Roti Terbaru */
+.expired-date {
+    display: block;
+    color: #dc2626;
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+/* --- PRODUCT GRID UTAMA --- */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    width: 220px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 12px 15px;
+}
+
+.card-title {
+    font-size: 15px;
+    margin: 0 0 6px 0;
+    color: #1f2937;
+}
+
+/* Informasi Kadaluarsa pada Card Utama */
+.expired-info {
+    font-size: 12px;
+    color: #4b5563;
+    margin-top: 6px;
+    background-color: #fef2f2;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border-left: 3px solid #ef4444;
+}
+
+.expired-info strong {
+    color: #991b1b;
+}
+
+.card-desc {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-footer {
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f3f4f6;
+}
+
+.price {
+    font-weight: bold;
+    color: #b45309;
+    font-size: 15px;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Tombol Ubah (Edit) */
+.btn-edit {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+/* Tombol Hapus */
+.btn-delete {
+    background-color: #dc2626;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+/* --- PESAN DATA TIDAK DITEMUKAN --- */
+.no-data {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background-color: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* --- KOTAK STATISTIK ROTI (SOAL 4) --- */
+.stats-container {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.stats-item {
+    background-color: #fff8dc;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.stats-item small {
+    display: block;
+    color: #6b7280;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.stats-item span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b45309;
+}
