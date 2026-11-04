@@ -7,5 +7,8 @@
 @endpush
 
 @section('content')
-    <h1>Tampilan Home</h1>
+    <div class="alert alert-success">
+        Selamat datang, {{ auth()->user()->name }}!
+        Kamu berhasil login.
+    </div>
 @endsection

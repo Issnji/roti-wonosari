@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\roti;
+use App\Models\roti_image;
 use carbon\Carbon;
+use intervention\Image\ImageManager;
+use intervention\Image\Gd\Driver;
+use illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -75,18 +79,37 @@ class PostController extends Controller
             'category'           => 'required|string|max:100',
             'price'              => 'required|numeric|min:0',
             'stock'              => 'required|integer|min:0',
-            'image'              => 'required|url|max:2048', 
+            'image'              => 'required|image|mimes:jpeg,png,jpg,webp|max:2048', 
         ]);
 
         $roti = new Roti();
         $roti->name = $validated['name'];
         $roti->category = $validated['category'];
         $roti->price = $validated['price'];
-        $roti->stock = $validated['stock'];
-        $roti->image = $validated['image']; 
+        $roti->stock = $validated['stock']; 
         $roti->tanggal_produksi = now();
         $roti->tanggal_kadaluarsa = $roti->tanggal_produksi->copy()->addDays(3);
         $roti->save();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // Manipulasi gambar dengan Intervention Image
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->resize(width: 800, height: 800); // Sesuaikan kebutuhan ukuran
+
+            // Simpan file fisik ke direktori storage/app/public/roti/
+            $destinationPath = storage_path('app/public/roti/' . $filename);
+            $image->save($destinationPath);
+
+            // Simpan data gambar ke tabel gambar_roti
+            GambarRoti::create([
+                'roti_id'     => $roti->id, // Mengambil ID roti yang baru disimpan
+                'path_gambar' => 'roti/' . $filename,
+            ]);
+        }
 
         return redirect('/coba')->with('success', 'Roti berhasil ditambahkan.');
     }
@@ -106,17 +129,41 @@ class PostController extends Controller
     }
 
     // Memperbarui produk
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $roti = Roti::find($id);
         $roti->name = request('name');
         $roti->category = request('category');
         $roti->price = request('price');
         $roti->stock = request('stock');
-        $roti->image = request('image');
         $roti->tanggal_produksi = request('tanggal_produksi');
         $roti->tanggal_kadaluarsa = $roti->tanggal_produksi->copy()->addDays(3);
         $roti->save();
+
+        if ($request->hasFile('image')) {
+            // 1. Cari record gambar lama di database
+            $gambarLama = GambarRoti::where('roti_id', $roti->id)->first();
+
+            // 2. Hapus file fisik gambar lama dari storage jika ada
+            if ($gambarLama && Storage::exists('public/' . $gambarLama->path_gambar)) {
+                Storage::delete('public/' . $gambarLama->path_gambar);
+            }
+
+            // 3. Proses upload & resize gambar baru
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->resize(width: 800, height: 800);
+            $image->save(storage_path('app/public/roti/' . $filename));
+
+            // 4. Perbarui data di database (buat baru jika belum ada, update jika sudah ada)
+            GambarRoti::updateOrCreate(
+                ['roti_id' => $roti->id],
+                ['path_gambar' => 'roti/' . $filename]
+            );
+        }
 
         return redirect('/coba')->with('success', 'roti berhasil diperbarui.');
     }

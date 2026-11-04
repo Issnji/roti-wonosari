@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Carbon\Carbon;
+use App\Models\roti_image;
 
 class roti extends Model
 {
@@ -17,7 +19,6 @@ class roti extends Model
         'name',
         'price',
         'stock',
-        'image',
         'category',
         'tanggal_produksi',
         'tanggal_kadaluarsa'
@@ -27,6 +28,10 @@ class roti extends Model
         'tanggal_produksi'   => 'datetime',
         'tanggal_kadaluarsa' => 'datetime',
     ];
+
+    public function images(): HasMany {
+        return $this->hasMany(RotiImage::class);
+    }
 
     protected static function booted()
     {

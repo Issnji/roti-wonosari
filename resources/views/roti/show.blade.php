@@ -10,8 +10,8 @@
 <div class="content-wrapper">
     <div class="card-detail">
         <div class="card-detail-image">
-            @if($roti->image)
-                <img src="{{ asset('storage/' . $roti->image) }}" alt="{{ $roti->name }}">
+            @if($roti->images->isNotEmpty())
+                <img src="{{ asset('storage/' . $roti->images->first()->path_gambar) }}" alt="{{ $roti->name }}">
             @else
                 <div class="no-image">Tidak ada gambar</div>
             @endif

@@ -8,7 +8,7 @@
             <div> Kategori <input type="text" name="category" required></div>
             <div> Harga <input type="number" name="price" required></div>
             <div> Stok <input type="number" name="stock" required></div>
-            <div> gambar <input type="text" name="image" required></div>
+            <div> gambar <input type="file" name="image" accept="image/*" required></div>
             <div> <button type="submit">Simpan</button></div>
     </div>
 @endsection

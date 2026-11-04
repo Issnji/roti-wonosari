@@ -1,0 +1,123 @@
+/* ===================================================
+   Grand Design Palette - Roti Wonosari
+   =================================================== */
+:root {
+    --rw-primary: #8C4A27;        /* Cokelat Pemanggangan / Warm Toast */
+    --rw-primary-hover: #70381C;  /* Cokelat Tua */
+    --rw-secondary: #E3A857;      /* Kuning Keemasan / Butter Gold */
+    --rw-accent: #D97736;         /* Karamel */
+    --rw-bg: #FDF9F5;             /* Krim Tepung Wheat / Cream */
+    --rw-card-bg: #FFFFFF;
+    --rw-text-dark: #3B2416;      /* Espresso / Cokelat Gelap */
+    --rw-text-muted: #7C6A5D;
+    --rw-border: #EFE4D8;
+    --rw-shadow: 0 10px 30px rgba(140, 74, 39, 0.08);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--rw-bg);
+    color: var(--rw-text-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Card Wrapper */
+.card-roti-wonosari {
+    background-color: var(--rw-card-bg);
+    border: 1px solid var(--rw-border);
+    border-radius: 20px;
+    box-shadow: var(--rw-shadow);
+}
+
+/* Header & Brand */
+.brand-title {
+    color: var(--rw-primary);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.brand-subtitle {
+    color: var(--rw-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Form Styling */
+.form-label {
+    color: var(--rw-text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+.form-control {
+    border-color: var(--rw-border);
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    color: var(--rw-text-dark);
+    background-color: #FAF6F0;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    background-color: #FFFFFF;
+    border-color: var(--rw-secondary);
+    box-shadow: 0 0 0 0.25rem rgba(227, 168, 87, 0.25);
+    color: var(--rw-text-dark);
+}
+
+/* Checkbox */
+.form-check-input {
+    border-color: var(--rw-border);
+}
+
+.form-check-input:checked {
+    background-color: var(--rw-primary);
+    border-color: var(--rw-primary);
+}
+
+.form-check-label {
+    color: var(--rw-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Button Primary */
+.btn-roti-primary {
+    background-color: var(--rw-primary);
+    border-color: var(--rw-primary);
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-roti-primary:hover,
+.btn-roti-primary:focus {
+    background-color: var(--rw-primary-hover);
+    border-color: var(--rw-primary-hover);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(140, 74, 39, 0.2);
+}
+
+/* Links & Footer Text */
+.link-roti {
+    color: var(--rw-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link-roti:hover {
+    color: var(--rw-primary);
+    text-decoration: underline;
+}
+
+/* Alert Error Custom */
+.alert-roti {
+    background-color: #FDF2F2;
+    border-color: #F8D7DA;
+    color: #842029;
+    border-radius: 10px;
+    font-size: 0.875rem;
+}

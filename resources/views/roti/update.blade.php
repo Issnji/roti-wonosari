@@ -12,7 +12,7 @@
             <div> Kategori <input type="text" name="category" value="{{ $roti->category }}" required></div>
             <div> Harga <input type="number" name="price" value="{{ $roti->price }}" required></div>
             <div> Stok <input type="number" name="stock" value="{{ $roti->stock }}" required></div>
-            <div> Gambar <input type="text" name="image" value="{{ $roti->image }}" required></div>
+            <div> Gambar <input type="file" name="image" accept="image/*" required></div>
             <div> Tanggal Produksi <input type="date" id="tanggal_produksi" name="tanggal_produksi" value="{{ $roti->tanggal_produksi }}" required></div>
             
             <div style="margin-top: 10px;">
