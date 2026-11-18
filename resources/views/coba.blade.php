@@ -67,6 +67,24 @@
     <div class="product-grid">
         @forelse($rotis as $roti)
             <div class="card">
+                <!-- WRAPPER THUMBNAIL GAMBAR -->
+                <div class="card-thumbnail">
+                    <a href="{{ route('coba.show', $roti->id) }}">
+                        @if($roti->images && $roti->images->isNotEmpty())
+                            @php
+                                // Ambil gambar yang ditandai thumbnail atau gambar pertama
+                                $imageItem = $roti->images->where('is_thumbnail', true)->first() ?? $roti->images->first();
+                                $imagePath = $imageItem->thumbnail_path ?? $imageItem->image_path;
+                            @endphp
+                            <img src="{{ asset('storage/' . $roti->images->first()->thumbnail_path) }}" alt="{{ $roti->name }}" class="img-thumbnail">
+                        @else
+                            <div class="no-image-thumbnail">
+                                <span>Tidak Ada Gambar</span>
+                            </div>
+                        @endif
+                    </a>
+                </div>
+
                 <div class="card-body">
                     <span class="badge">{{ $roti->category }}</span>
                     <h3 class="card-title">
@@ -75,16 +93,15 @@
                         </a>
                     </h3>
                     <div class="expired-date">
-                        Kadaluarsa: {{ $roti->tanggal_kadaluarsa->format('d M Y') }}
+                        Kadaluarsa: {{ \Carbon\Carbon::parse($roti->tanggal_kadaluarsa)->format('d M Y') }}
                     </div>
                 </div>
+
                 <div class="card-footer">
                     <span class="price">Rp {{ number_format($roti->price, 0, ',', '.') }}</span>
                     
-                    <!-- Tombol Update -->
                     <div class="card-actions">
                         <a href="{{ route('coba.edit', $roti->id) }}" class="btn-edit">Ubah</a>
-                        <!-- Form Tombol Hapus -->
                         <form action="{{ route('coba.destroy', $roti->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

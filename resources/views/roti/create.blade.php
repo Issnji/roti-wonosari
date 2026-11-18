@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <h4>Tambah Produk</h4>
-        <form method="POST" action="{{ route('coba.store') }}">
+        <form method="POST" action="{{ route('coba.store') }}" enctype="multipart/form-data">
             @csrf
             <div> Nama <input type="text" name="name" required></div>
             <div> Kategori <input type="text" name="category" required></div>

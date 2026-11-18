@@ -4,7 +4,7 @@
     <div class="container">
         <h4>Ubah Produk</h4>
 
-        <form method="POST" action="{{ route('coba.update', $roti->id) }}">
+        <form method="POST" action="{{ route('coba.update', $roti->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
